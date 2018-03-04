@@ -1,25 +1,25 @@
 {
-  "name": "infernal-proser-example",
+  "name": "vergil-example",
   "version": "0.0.1",
   "private": true,
-  "description": "Example of Infernal Proser",
+  "description": "Example of Vergil",
   "author": "Yasuhiro Asaka <yasuhiro.asaka@grauwoelfchen.net>",
   "license": "MIT",
-  "homepage": "https://gitlab.com/grauwoelfchen/infernal-proser",
+  "homepage": "https://gitlab.com/grauwoelfchen/vergil/example",
   "scripts": {
     "build": "rollup -c",
     "watch": "rollup -c -w"
   },
   "repository": {
     "type": "git",
-    "url": "https://gitlab.com/grauwoelfchen/infernal-proser.git"
+    "url": "https://gitlab.com/grauwoelfchen/vergil.git"
   },
   "files": [
     "dst",
     "src"
   ],
   "dependencies": {
-    "infernal-proser": "file:..",
+    "vergil": "file:..",
     "inferno": "^4.0.6",
     "inferno-hyperscript": "^4.0.6"
   },

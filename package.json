@@ -1,11 +1,11 @@
 {
-  "name": "infernal-proser",
+  "name": "vergil",
   "version": "0.0.1",
-  "description": "Inferno + ProseMirror",
+  "description": "A editor written with Inferno + ProseMirror",
   "main": "./dst/index.js",
   "author": "Yasuhiro Asaka <yasuhiro.asaka@grauwoelfchen.net>",
   "license": "MIT",
-  "homepage": "https://gitlab.com/grauwoelfchen/infernal-proser",
+  "homepage": "https://gitlab.com/grauwoelfchen/vergil",
   "scripts": {
     "build": "rollup -c",
     "watch": "rollup -c -w"
@@ -16,7 +16,7 @@
   ],
   "repository": {
     "type": "git",
-    "url": "https://gitlab.com/grauwoelfchen/infernal-proser.git"
+    "url": "https://gitlab.com/grauwoelfchen/vergil.git"
   },
   "files": [
     "dst",

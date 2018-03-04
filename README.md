@@ -1,6 +1,15 @@
-# Infernal Proser
+# Vergil
 
-Inferno + ProseMirror
+`/ˈvɜːrdʒɪl/`
+
+
+A editor written with [Inferno](https://www.infernojs.org/) + [ProseMirror](http://prosemirror.net/)
+
+```txt
+\  /_ .__ o|
+ \/(/_|(_|||
+        _|
+```
 
 ## Build
 
