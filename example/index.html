@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Infernal Proser</title>
+<style>
+body {
+  background-color: #ffffff;
+}
+#content {
+  display: none;
+}
+/* TODO */
+.ProseMirror {
+  outline: 0;
+}
+.ProseMirror .placeholder {
+  color: #b3b3b3;
+  pointer-events: none;
+}
+.ProseMirror:focus .placeholder {
+  display: none;
+}
+.ProseMirror p {
+  margin-block-start: 1.45rem;
+  margin-block-end: 1.45rem;
+  margin-top: 0;
+  margin-bottom: 0;
+  padding-top: 0.36rem;
+  padding-bottom: 0.36rem;
+}
+</style>
+<body>
+  <div id="container"></div>
+  <div id="content"></div>
+  <script src="./dst/bundle.js" charset="utf-8"></script>
+</body>

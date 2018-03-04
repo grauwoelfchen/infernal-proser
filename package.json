@@ -1,0 +1,42 @@
+{
+  "name": "infernal-proser",
+  "version": "0.0.1",
+  "description": "Inferno + ProseMirror",
+  "main": "./dst/index.js",
+  "author": "Yasuhiro Asaka <yasuhiro.asaka@grauwoelfchen.net>",
+  "license": "MIT",
+  "homepage": "https://gitlab.com/grauwoelfchen/infernal-proser",
+  "scripts": {
+    "build": "rollup -c",
+    "watch": "rollup -c -w"
+  },
+  "keywords": [
+    "inferno",
+    "prosemirror"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://gitlab.com/grauwoelfchen/infernal-proser.git"
+  },
+  "files": [
+    "dst",
+    "src"
+  ],
+  "dependencies": {
+    "inferno-hyperscript": "^4.0.6",
+    "prosemirror-model": "^1.1.0",
+    "prosemirror-schema-basic": "^1.0.0",
+    "prosemirror-state": "^1.1.1",
+    "prosemirror-view": "^1.1.1"
+  },
+  "peerDependencies": {
+    "inferno": ">=4"
+  },
+  "devDependencies": {
+    "inferno": "^4.0.6",
+    "rollup": "^0.56.3",
+    "rollup-plugin-buble": "0.15.0",
+    "rollup-plugin-node-resolve": "3.0.3",
+    "rollup-plugin-uglify": "3.0.0"
+  }
+}
