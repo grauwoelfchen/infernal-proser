@@ -1,13 +1,52 @@
-import { Component } from 'inferno';
+import { linkEvent, Component } from 'inferno';
 import { h } from 'inferno-hyperscript';
 
 import { EditorState } from 'prosemirror-state';
 import { EditorView } from 'prosemirror-view';
 
 
+// event
+const handleInput = (props, event) => {
+  if (props.event.onInput) {
+    return props.event.onInput(event);
+  }
+};
+
+const handleFocusIn = (props, event) => {
+  if (props.event.onFocusIn) {
+    return props.event.onFocusIn(event);
+  }
+};
+
+const handleFocusOut = (props, event) => {
+  if (props.event.onFocusOut) {
+    return props.event.onFocusOut(event);
+  }
+};
+
+// hook
+const beforeDispatch = (props, transaction) => {
+  if (props.hook.beforeDispatch) {
+    return props.hook.beforeDispatch(transaction);
+  }
+}
+
+const afterDispatch = (props, transaction) => {
+  if (props.hook.afterDispatch) {
+    return props.hook.afterDispatch(transaction);
+  }
+}
+
 class Editor extends Component {
   constructor(props) {
     super(props);
+
+    if (!this.props.event) {
+      this.props.event = {};
+    }
+    if (!this.props.hook) {
+      this.props.hook = {};
+    }
 
     this.state = {
       state: EditorState.create({
@@ -17,17 +56,14 @@ class Editor extends Component {
     }
   }
 
-  handleChange(event) {
-    if (this.props.onChange) {
-      return this.props.onChange(event);
-    }
-  }
-
   dispatchTransaction(transaction) {
+    beforeDispatch(this.props, transaction);
+
     const state = this.view.state.apply(transaction);
     this.view.updateState(state);
     this.setState({state});
-    this.handleChange({target: state.doc});
+
+    afterDispatch(this.props, transaction);
   }
 
   render() {
@@ -40,6 +76,9 @@ class Editor extends Component {
           });
         }
       }
+    , onFocusIn: linkEvent(this.props, handleFocusIn)
+    , onFocusOut: linkEvent(this.props, handleFocusOut)
+    , onInput: linkEvent(this.props, handleInput)
     });
   }
 }

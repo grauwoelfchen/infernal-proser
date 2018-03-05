@@ -15,6 +15,25 @@ render(
           Placeholder('Write something here...')
         ]
       }
+    , event: {  // optinal
+        onFocusIn: (e) => {
+          e //window.console.log('(onFocusIn): ' + e)
+        }
+      , onInput: (e) => {
+          e //window.console.log('(onInput)' + e)
+        }
+      , onFocusOut: (e) => {
+          e //window.console.log('(onFocusOut): ' + e)
+        }
+      }
+    , hook: {  // optional
+        beforeDispatch: (t) => {
+          t //window.console.log('beforeDispatch: ' + t)
+        }
+      , afterDispatch: (t) => {
+          t //window.console.log('afterDispatch: ' + t)
+        }
+      }
     }),
   ])
 , document.querySelector('#container')
