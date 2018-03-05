@@ -16,7 +16,10 @@
   ],
   "repository": {
     "type": "git",
-    "url": "https://gitlab.com/grauwoelfchen/vergil.git"
+    "url": "git+https://gitlab.com/grauwoelfchen/vergil.git"
+  },
+  "bugs": {
+    "url": "https://gitlab.com/grauwoelfchen/vergil/issues"
   },
   "files": [
     "dst",
