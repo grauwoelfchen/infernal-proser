@@ -3,7 +3,7 @@ import { version } from '../package.json';
 import { render } from 'inferno';
 import { h } from 'inferno-hyperscript';
 
-import { Editor, Parser, Placeholder } from 'infernal-proser';
+import { Editor, Parser, Placeholder } from 'vergil';
 
 render(
   h('div.wrapper',[
