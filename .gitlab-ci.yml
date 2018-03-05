@@ -1,0 +1,86 @@
+stages:
+  - check
+  - test
+  - build
+
+check:
+  stage: check
+  image: node:8.9.4
+  services:
+  variables:
+    NODE_ENV: development
+  before_script:
+    - node --version
+    - npm --version
+    - npm install -g eslint
+  script:
+    - eslint src
+  cache:
+    untracked: true
+    paths:
+      - node_modules
+  except:
+    - tags
+
+test-unit:
+  stage: test
+  image: node:8.9.4
+  services:
+  variables:
+    NODE_ENV: testing
+  before_script:
+    - node --version
+    - npm --version
+    - npm install
+  script:
+    - npm test
+  cache:
+    untracked: true
+    paths:
+      - node_modules
+  except:
+    - tags
+
+test-etoe:
+  stage: test
+  image: node:8.9.4
+  services:
+  variables:
+    NODE_ENV: testing
+  before_script:
+    - node --version
+    - npm --version
+    - npm install
+    # testing build
+    - npm run build
+  script:
+    - npm run karma
+  cache:
+    untracked: true
+    paths:
+      - node_modules
+  except:
+    - tags
+
+build:
+  stage: build
+  image: node:8.9.4
+  services:
+  variables:
+    NODE_ENV: production
+  before_script:
+    - node --version
+    - npm --version
+    - npm install
+  script:
+    - npm run build
+  cache:
+    untracked: true
+    paths:
+      - node_modules
+  artifacts:
+    untracked: true
+    paths:
+      - dst
+  except:
+    - tags
