@@ -4,6 +4,8 @@ import { h } from 'inferno-hyperscript';
 import { EditorState } from 'prosemirror-state';
 import { EditorView } from 'prosemirror-view';
 
+import { keymap } from './keymap';
+
 
 // event
 const handleInput = (props, event) => {
@@ -39,19 +41,27 @@ const afterDispatch = (props, transaction) => {
 
 class Editor extends Component {
   constructor(props) {
-    super(props);
+    if (!props.config) {
+      props.config = {plugins: []};
+    }
+    if (!props.event) {
+      props.event = {};
+    }
+    if (!props.hook) {
+      props.hook = {};
+    }
 
-    if (!this.props.event) {
-      this.props.event = {};
+    if (!Array.isArray(props.config.plugins)) {
+      props.config.plugins = [];
     }
-    if (!this.props.hook) {
-      this.props.hook = {};
-    }
+    super(props);
 
     this.state = {
       state: EditorState.create({
-        doc: props.config.content
-      , plugins: props.config.plugins
+        doc: this.props.config.content
+      , plugins: [ // built-in
+          keymap()
+        ].concat(this.props.config.plugins)
       })
     }
   }
