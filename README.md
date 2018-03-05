@@ -28,5 +28,5 @@ See [LICENSE](LICENSE).
 
 ```txt
 Vergil
-Copyright (c) 2017-2018 Yasuhiro Asaka
+Copyright (c) 2018 Yasuhiro Asaka
 ```
