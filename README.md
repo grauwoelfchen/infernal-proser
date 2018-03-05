@@ -11,7 +11,7 @@
         _|
 ```
 
-A editor written with [Inferno](https://www.infernojs.org/) + [ProseMirror](http://prosemirror.net/)
+An editor written with [Inferno](https://www.infernojs.org/) + [ProseMirror](http://prosemirror.net/)
 
 
 ## Build
