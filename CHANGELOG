@@ -1,4 +1,9 @@
+Tue 06 Mar 2018 Yasuhiro Asaka <yasuhiro.asaka@grauwoelfchen.net>
+	* Setup unit/e2e testing
+
 Mon 05 Mar 2018 Yasuhiro Asaka <yasuhiro.asaka@grauwoelfchen.net>
+	* Fix version dependency
+	* Release v0.0.1
 	* Name project as Vergil
 
 Sun 04 Mar 2018 Yasuhiro Asaka <yasuhiro.asaka@grauwoelfchen.net>
