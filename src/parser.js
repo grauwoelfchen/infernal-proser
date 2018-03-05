@@ -1,21 +1,8 @@
-import { Schema, DOMParser } from 'prosemirror-model';
-import { schema } from 'prosemirror-schema-basic';
+import { DOMParser } from 'prosemirror-model';
 
-const aSchema = new Schema({
-  nodes: {
-    doc: {
-      content: 'block+'
-    }
-  , paragraph: {
-      group: 'block'
-    , content: 'text*'
-    , toDOM(_node) { return ['p', 0] }
-    }
-  , text: {}
-  }
-, marks: schema.spec.marks
-});
+import { default as Schema } from './schema';
 
-let Parser = DOMParser.fromSchema(aSchema);
+
+let Parser = DOMParser.fromSchema(Schema);
 
 export default Parser;
