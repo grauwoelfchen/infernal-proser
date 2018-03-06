@@ -1,4 +1,7 @@
 Tue 06 Mar 2018 Yasuhiro Asaka <yasuhiro.asaka@grauwoelfchen.net>
+	* Fix `word-wrap` issue with CSS on Firefox (example)
+	* Refactor code style
+	* Add keymap and macro
 	* Release v0.0.2
 	* Setup unit/e2e testing
 
