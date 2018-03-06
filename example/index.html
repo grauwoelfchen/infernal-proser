@@ -3,16 +3,41 @@
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <title>Vergil Example</title>
 <style>
+:focus, :active {
+  outline: none;
+}
+::-moz-focus-inner {
+  outline: none;
+  outline-style: none;
+  border: 0;
+}
+
 body {
   background-color: #ffffff;
+  padding: 0.495rem 0.336rem;
+  margin: 0;
 }
 #content {
   display: none;
 }
-/* TODO */
-.ProseMirror {
-  outline: 0;
+span.version {
+  display: inline-block;
+  background: #24292e;
+  border-radius: 0.12rem;
+  padding: 0.11rem 0.389rem;
+  margin: 0.11rem 0;
+  color: #f3faf6;
+  font-family: monospace;
+  font-size: 0.88em;
 }
+
+/* site style */
+.ProseMirror {
+  padding: 0.09rem 0.19rem;
+  margin: 0.129rem 0;
+}
+
+/* TODO */
 .ProseMirror .placeholder {
   color: #b3b3b3;
   pointer-events: none;

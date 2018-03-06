@@ -1,4 +1,5 @@
-import {version} from '../package.json';
+// vergil's package.json
+import {version} from '../../package.json';
 
 import {render} from 'inferno';
 import {h} from 'inferno-hyperscript';
@@ -7,7 +8,7 @@ import {Editor, setPlaceholder} from 'vergil';
 
 render(
   h('div.wrapper',[
-    h('span', 'version: ' + version)
+    h('span.version', 'version: ' + version)
   , h(Editor, {
       config: {
         content: document.querySelector('#content')
