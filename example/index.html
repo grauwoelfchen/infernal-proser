@@ -3,6 +3,7 @@
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <title>Vergil Example</title>
 <style>
+/* site style */
 :focus, :active {
   outline: none;
 }
@@ -11,7 +12,6 @@
   outline-style: none;
   border: 0;
 }
-
 body {
   background-color: #ffffff;
   padding: 0.495rem 0.336rem;
@@ -30,14 +30,20 @@ span.version {
   font-family: monospace;
   font-size: 0.88em;
 }
-
-/* site style */
 .ProseMirror {
   padding: 0.09rem 0.19rem;
   margin: 0.129rem 0;
 }
 
-/* TODO */
+/* from prosemirror.css */
+.ProseMirror {
+  word-wrap: break-word;
+  white-space: pre-wrap;
+  -webkit-font-variant-ligatures: none;
+  font-variant-ligatures: none;
+}
+
+/* custom */
 .ProseMirror .placeholder {
   color: #b3b3b3;
   pointer-events: none;
