@@ -1,4 +1,4 @@
-export { default as Editor } from './editor';
-export { default as Parser } from './parser';
+export {Editor} from './editor';
 
-export { default as Placeholder } from './plugins/placeholder/index.js';
+// plugins
+export {setPlaceholder} from './plugins/placeholder/index.js';

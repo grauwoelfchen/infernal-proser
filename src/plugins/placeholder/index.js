@@ -1,7 +1,8 @@
-import { Plugin } from 'prosemirror-state';
-import { Decoration, DecorationSet } from 'prosemirror-view';
+import {Plugin} from 'prosemirror-state';
+import {Decoration, DecorationSet} from 'prosemirror-view';
 
-let Placeholder = (text) => {
+
+export let setPlaceholder = (text) => {
   return new Plugin({
     props: {
       decorations(state) {
@@ -25,5 +26,3 @@ let Placeholder = (text) => {
     }
   });
 };
-
-export default Placeholder;

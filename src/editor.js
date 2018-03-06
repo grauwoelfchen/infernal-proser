@@ -1,11 +1,12 @@
-import { linkEvent, Component } from 'inferno';
-import { h } from 'inferno-hyperscript';
+import {linkEvent, Component} from 'inferno';
+import {h} from 'inferno-hyperscript';
 
-import { EditorState } from 'prosemirror-state';
-import { EditorView } from 'prosemirror-view';
+import {EditorState} from 'prosemirror-state';
+import {EditorView} from 'prosemirror-view';
 
-import { keymap } from './keymap';
-import { macro } from './macro';
+import {parser} from './parser';
+import {keymap} from './keymap';
+import {macro} from './macro';
 
 
 // event
@@ -40,7 +41,7 @@ const afterDispatch = (props, transaction) => {
   }
 }
 
-class Editor extends Component {
+export class Editor extends Component {
   constructor(props) {
     if (!props.config) {
       props.config = {plugins: []};
@@ -64,7 +65,7 @@ class Editor extends Component {
 
     this.state = {
       state: EditorState.create({
-        doc: this.props.config.content
+        doc: parser.parse(this.props.config.content)
       , plugins: plugins
       })
     }
@@ -96,5 +97,3 @@ class Editor extends Component {
     });
   }
 }
-
-export default Editor

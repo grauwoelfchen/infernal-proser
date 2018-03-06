@@ -1,8 +1,8 @@
-import { Schema } from 'prosemirror-model';
-import { marks } from 'prosemirror-schema-basic';
+import {Schema} from 'prosemirror-model';
+import {marks} from 'prosemirror-schema-basic';
 
 
-const schema = new Schema({
+export const schema = new Schema({
   nodes: {
     doc: {
       content: 'block+'
@@ -63,5 +63,3 @@ const schema = new Schema({
   }
 , marks
 });
-
-export default schema;

@@ -1,9 +1,9 @@
-import { chainCommands, exitCode, newlineInCode,
-         createParagraphNear,
-         liftEmptyBlock, splitBlock } from 'prosemirror-commands';
-import { keymap as keymap_ } from 'prosemirror-keymap';
+import {chainCommands, exitCode, newlineInCode,
+        createParagraphNear,
+        liftEmptyBlock, splitBlock} from 'prosemirror-commands';
+import {keymap as keymap_} from 'prosemirror-keymap';
 
-import { default as schema } from './schema';
+import {schema} from './schema';
 
 
 // `mapKeys` e.g. {

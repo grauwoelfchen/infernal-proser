@@ -1,8 +1,6 @@
-import { DOMParser } from 'prosemirror-model';
+import {DOMParser} from 'prosemirror-model';
 
-import { default as Schema } from './schema';
+import {schema} from './schema';
 
 
-let Parser = DOMParser.fromSchema(Schema);
-
-export default Parser;
+export let parser = DOMParser.fromSchema(schema);

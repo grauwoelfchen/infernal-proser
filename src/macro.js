@@ -1,5 +1,5 @@
-import { inputRules,
-         smartQuotes, emDash,  ellipsis } from 'prosemirror-inputrules'
+import {inputRules,
+        smartQuotes, emDash,  ellipsis} from 'prosemirror-inputrules'
 
 
 export function macro() {
