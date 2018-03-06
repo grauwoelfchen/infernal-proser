@@ -5,6 +5,7 @@ import { EditorState } from 'prosemirror-state';
 import { EditorView } from 'prosemirror-view';
 
 import { keymap } from './keymap';
+import { macro } from './macro';
 
 
 // event
@@ -56,12 +57,15 @@ class Editor extends Component {
     }
     super(props);
 
+    let plugins = [ // built-in
+      macro()
+    , keymap()
+    ].concat(this.props.config.plugins)
+
     this.state = {
       state: EditorState.create({
         doc: this.props.config.content
-      , plugins: [ // built-in
-          keymap()
-        ].concat(this.props.config.plugins)
+      , plugins: plugins
       })
     }
   }
