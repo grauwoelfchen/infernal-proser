@@ -13,7 +13,9 @@ export const schema = new Schema({
     , parseDOM: [
         {tag: 'p'}
       ]
-    , toDOM() { return ['p', 0]; }
+    , toDOM() {
+        return ['p', 0];
+      }
     }
   , code_block: {
       content: 'text*'
@@ -24,7 +26,9 @@ export const schema = new Schema({
     , parseDOM: [
        {tag: 'pre', preserveWhitespace: 'full'}
       ]
-    , toDOM() { return ['pre', ['code', 0]]; }
+    , toDOM() {
+        return ['pre', ['code', 0]];
+      }
     }
   , blockquote: {
       content: 'block+'
@@ -33,7 +37,9 @@ export const schema = new Schema({
     , parseDOM: [
         {tag: 'blockquote'}
       ]
-    , toDOM() { return ['blockquote', 0]; }
+    , toDOM() {
+        return ['blockquote', 0];
+      }
     }
   , heading: {
       attrs: {level: {default: 1}}
@@ -48,7 +54,9 @@ export const schema = new Schema({
       , {tag: 'h5', attrs: {level: 5}}
       , {tag: 'h6', attrs: {level: 6}}
       ]
-    , toDOM(n) { return ['h' + n.attrs.level, 0]; }
+    , toDOM(n) {
+        return ['h' + n.attrs.level, 0];
+      }
     }
   , text: {
       group: 'inline'
@@ -58,7 +66,9 @@ export const schema = new Schema({
     , group: 'inline'
     , selectable: false
     , parseDOM: [{tag: 'br'}]
-    , toDOM() { return ['br']; }
+    , toDOM() {
+        return ['br'];
+      }
     }
   }
 , marks
