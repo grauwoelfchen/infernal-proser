@@ -14,6 +14,40 @@
 An editor written with [Inferno](https://www.infernojs.org/) + [ProseMirror](http://prosemirror.net/)
 
 
+## Usage
+
+```javascript
+import {render} from 'inferno';
+import {h} from 'inferno-hyperscript';
+
+import {Editor, setPlaceholder} from 'vergil';
+
+render(
+  h('.wrapper',[
+    h(Editor, {
+      config: {
+        className: '.vergil'
+      , content: document.querySelector('#content')
+      , plugins: [
+          setPlaceholder('Write something here...')
+        ]
+      }
+    , event: { // event handlers (optinal)
+        onFocusIn: (e) => { ... }
+      , onInput: (e) => { ... }
+      , onFocusOut: (e) => { ... }
+      }
+    , hook: { // transaction hooks (optional)
+        beforeDispatch: (t) => { ... }
+      , afterDispatch: (t) => { ... }
+      }
+    })
+  ])
+, document.querySelector('#editor')
+);
+```
+
+
 ## Build
 
 ```zsh

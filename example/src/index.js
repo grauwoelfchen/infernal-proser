@@ -7,11 +7,14 @@ import {h} from 'inferno-hyperscript';
 import {Editor, setPlaceholder} from 'vergil';
 
 render(
-  h('div.wrapper',[
-    h('span.version', 'version: ' + version)
+  // inferno v4.x does not include multiple fragments yet.
+  // https://github.com/infernojs/inferno/issues/501
+  h('.wrapper',[
+    h('.version', 'version: ' + version)
   , h(Editor, {
       config: {
-        content: document.querySelector('#content')
+        className: '.vergil'
+      , content: document.querySelector('#content')
       , plugins: [
           setPlaceholder('Write something here...')
         ]
@@ -35,7 +38,7 @@ render(
           t //window.console.log('afterDispatch: ' + t)
         }
       }
-    }),
+    })
   ])
-, document.querySelector('#container')
+, document.querySelector('#editor')
 );

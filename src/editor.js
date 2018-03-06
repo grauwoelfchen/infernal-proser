@@ -41,10 +41,12 @@ const afterDispatch = (props, transaction) => {
   }
 }
 
+const className = '.vergil';
+
 export class Editor extends Component {
   constructor(props) {
     if (!props.config) {
-      props.config = {plugins: []};
+      props.config = {plugins: [], className};
     }
     if (!props.event) {
       props.event = {};
@@ -82,7 +84,8 @@ export class Editor extends Component {
   }
 
   render() {
-    return h('div', {
+    const className_ = this.props.config.className || className;
+    return h(className_, {
       ref: (node) => {
         if (!this.view) {
           this.view = new EditorView(node, {

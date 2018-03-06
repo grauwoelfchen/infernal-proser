@@ -17,18 +17,22 @@ body {
   padding: 0.495rem 0.336rem;
   margin: 0;
 }
-#content {
-  display: none;
+.wrapper {
+  margin: 0;
+  padding: 0;
 }
-span.version {
+.version {
   display: inline-block;
-  background: #24292e;
+  background-color: #272822;
   border-radius: 0.12rem;
   padding: 0.11rem 0.389rem;
   margin: 0.11rem 0;
   color: #f3faf6;
   font-family: monospace;
   font-size: 0.88em;
+}
+#content {
+  display: none;
 }
 .ProseMirror {
   padding: 0.09rem 0.19rem;
@@ -48,7 +52,8 @@ span.version {
   color: #b3b3b3;
   pointer-events: none;
 }
-.ProseMirror:focus {
+.ProseMirror:focus,
+.ProseMirror:focus p {
   caret-color: #666666;
 }
 .ProseMirror:focus .placeholder {
@@ -64,7 +69,8 @@ span.version {
 }
 </style>
 <body>
-  <div id="container"></div>
-  <div id="content"></div>
+  <div id="editor">
+    <div id="content"></div>
+  </div>
   <script src="./dst/bundle.js" charset="utf-8"></script>
 </body>
