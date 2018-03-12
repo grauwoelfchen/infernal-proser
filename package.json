@@ -30,6 +30,7 @@
   ],
   "dependencies": {
     "inferno-hyperscript": "^4.0.6",
+    "inferno-shared": "^4.0.6",
     "prosemirror-commands": "1.0.5",
     "prosemirror-inputrules": "1.0.1",
     "prosemirror-keymap": "1.0.1",

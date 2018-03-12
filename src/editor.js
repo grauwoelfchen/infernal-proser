@@ -1,5 +1,6 @@
 import {linkEvent, Component} from 'inferno';
 import {h} from 'inferno-hyperscript';
+import {isFunction} from 'inferno-shared';
 
 import {EditorState} from 'prosemirror-state';
 import {EditorView} from 'prosemirror-view';
@@ -9,35 +10,32 @@ import {keymap} from './keymap';
 import {macro} from './macro';
 
 
-// event
-const handleInput = (props, event) => {
-  if (props.event.onInput) {
-    return props.event.onInput(event);
-  }
-};
+// events
+const buildHandler = (prop) => {
+  return (instance, event) => {
+    let value = instance.props[prop];
+    if (isFunction(value)) {
+      return value(instance, event);
+    } else if (typeof value === 'object' && value !== null) {
+      return value;
+    } else {
+      return null;
+    }
+  };
+}
 
-const handleFocusIn = (props, event) => {
-  if (props.event.onFocusIn) {
-    return props.event.onFocusIn(event);
-  }
-};
-
-const handleFocusOut = (props, event) => {
-  if (props.event.onFocusOut) {
-    return props.event.onFocusOut(event);
-  }
-};
-
-// hook
-const beforeDispatch = (props, transaction) => {
-  if (props.hook.beforeDispatch) {
-    return props.hook.beforeDispatch(transaction);
+// hooks
+const handleBeforeDispatch = (instance, transaction) => {
+  let beforeDispatch = instance.props.beforeDispatch;
+  if (isFunction(beforeDispatch)) {
+    beforeDispatch(transaction);
   }
 }
 
-const afterDispatch = (props, transaction) => {
-  if (props.hook.afterDispatch) {
-    return props.hook.afterDispatch(transaction);
+const handleAfterDispatch = (instance, transaction) => {
+  let afterDispatch = instance.props.afterDispatch;
+  if (isFunction(afterDispatch)) {
+    afterDispatch(transaction);
   }
 }
 
@@ -48,12 +46,6 @@ export class Editor extends Component {
     if (!props.config) {
       props.config = {plugins: [], className};
     }
-    if (!props.event) {
-      props.event = {};
-    }
-    if (!props.hook) {
-      props.hook = {};
-    }
 
     if (!Array.isArray(props.config.plugins)) {
       props.config.plugins = [];
@@ -61,8 +53,7 @@ export class Editor extends Component {
     super(props);
 
     let plugins = [ // built-in
-      macro()
-    , keymap()
+      macro, keymap()
     ].concat(this.props.config.plugins)
 
     this.state = {
@@ -74,13 +65,13 @@ export class Editor extends Component {
   }
 
   dispatchTransaction(transaction) {
-    beforeDispatch(this.props, transaction);
+    handleBeforeDispatch(this, transaction);
 
     const state = this.view.state.apply(transaction);
     this.view.updateState(state);
     this.setState({state});
 
-    afterDispatch(this.props, transaction);
+    handleAfterDispatch(this, transaction);
   }
 
   render() {
@@ -94,9 +85,9 @@ export class Editor extends Component {
           });
         }
       }
-    , onFocusIn: linkEvent(this.props, handleFocusIn)
-    , onFocusOut: linkEvent(this.props, handleFocusOut)
-    , onInput: linkEvent(this.props, handleInput)
+    , onFocusIn: linkEvent(this, buildHandler('onFocusIn'))
+    , onFocusOut: linkEvent(this, buildHandler('onFocusOut'))
+    , onInput: linkEvent(this, buildHandler('onInput'))
     });
   }
 }

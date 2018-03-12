@@ -32,15 +32,13 @@ render(
           setPlaceholder('Write something here...')
         ]
       }
-    , event: { // event handlers (optinal)
-        onFocusIn: (e) => { ... }
-      , onInput: (e) => { ... }
-      , onFocusOut: (e) => { ... }
-      }
-    , hook: { // transaction hooks (optional)
-        beforeDispatch: (t) => { ... }
-      , afterDispatch: (t) => { ... }
-      }
+    // event handlers (optinal)
+    , onFocusIn: (e) => { ... }
+    , onInput: (e) => { ... }
+    , onFocusOut: (e) => { ... }
+    // transaction hooks (optional)
+    , beforeDispatch: (t) => { ... }
+    , afterDispatch: (t) => { ... }
     })
   ])
 , document.querySelector('#editor')
