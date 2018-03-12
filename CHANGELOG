@@ -1,4 +1,5 @@
 Tue 13 Mar 2018 Yasuhiro Asaka <yasuhiro.asaka@grauwoelfchen.net>
+	* Fix accidentaly broken change ;-(
 	* Fix package dependencies (version syntax)
 	* Release v0.0.4
 	* Set inferno dependencies as peer
