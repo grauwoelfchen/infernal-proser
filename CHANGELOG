@@ -1,4 +1,5 @@
 Tue 13 Mar 2018 Yasuhiro Asaka <yasuhiro.asaka@grauwoelfchen.net>
+	* Set inferno dependencies as peer
 	* Remove 'event' and 'hook' keys from props (just set property directly)
 
 Wed 07 Mar 2018 Yasuhiro Asaka <yasuhiro.asaka@grauwoelfchen.net>
