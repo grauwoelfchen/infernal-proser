@@ -53,7 +53,8 @@ export class Editor extends Component {
     super(props);
 
     let plugins = [ // built-in
-      macro, keymap()
+      macro()
+    , keymap()
     ].concat(this.props.config.plugins)
 
     this.state = {
