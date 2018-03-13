@@ -54,7 +54,7 @@ test-etoe:
     # testing build
     - npm run build
   script:
-    - npm run karma
+    - ./node_modules/.bin/karma start karma.conf.js
   cache:
     untracked: true
     paths:
