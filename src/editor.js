@@ -16,11 +16,14 @@ const buildHandler = (prop) => {
     let value = instance.props[prop];
     if (isFunction(value)) {
       return value(instance, event);
-    } else if (typeof value === 'object' && value !== null) {
-      return value;
-    } else {
-      return null;
+    } else if (typeof value === 'object' && value !== null &&
+               (value.data && isFunction(value.event))) {
+      // NOTE:
+      // assumes here usage of `linkEvent`
+      // and gives `data` to the function, instead of this editor `instance`
+      return value.event(value.data, event);
     }
+    return null;
   };
 }
 
@@ -41,7 +44,7 @@ const handleAfterDispatch = (instance, transaction) => {
 
 const className = '.vergil';
 
-export class Editor extends Component {
+class Editor extends Component {
   constructor(props) {
     if (!props.config) {
       props.config = {plugins: [], className};
@@ -91,4 +94,12 @@ export class Editor extends Component {
     , onInput: linkEvent(this, buildHandler('onInput'))
     });
   }
+}
+
+export {
+  buildHandler
+, handleBeforeDispatch
+, handleAfterDispatch
+
+, Editor
 }
