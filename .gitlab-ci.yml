@@ -46,7 +46,7 @@ test-etoe:
   image: node:8.9.4
   services:
   variables:
-    NODE_ENV: testing
+    NODE_ENV: test
   before_script:
     - node --version
     - npm --version

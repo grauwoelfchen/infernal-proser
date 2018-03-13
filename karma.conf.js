@@ -23,7 +23,7 @@ module.exports = (config) => {
   , files: [
       'dst/index.js'
       // rollup fix (via test/prepare-karma.sh)
-      , 'test/build/tape.js'
+    , 'test/build/tape.js'
       // test
     , 'test/etoe/**/*-test.js'
     ]
