@@ -9,7 +9,7 @@
   "scripts": {
     "test": "./test/run-unit.js test/unit/**/*-test.js | faucet",
     "prekarma": "./test/prepare-karma.sh",
-    "karma": "karma start karma.conf.js",
+    "karma": "./node_modules/.bin/karma start karma.conf.js",
     "build": "rollup -c",
     "watch": "rollup -c -w"
   },

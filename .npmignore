@@ -3,6 +3,10 @@ package-lock.json
 /node_modules
 /test
 
+/.env.ci.sample
+/.env.ci
+
+/bin
 /example
 
 /.reify-cache

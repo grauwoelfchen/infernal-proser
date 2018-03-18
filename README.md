@@ -67,6 +67,9 @@ render(
 ```zsh
 : via karma
 % npm run karma
+
+: if you have `xvfb-run` (for CI environment etc.)
+% xvfb-run npm run karma
 ```
 
 

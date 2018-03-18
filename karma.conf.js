@@ -1,14 +1,24 @@
-const buble = require('rollup-plugin-buble');
-const replace = require('rollup-plugin-replace');
-const commonjs = require('rollup-plugin-commonjs');
-const nodeBuiltins = require('rollup-plugin-node-builtins');
-const nodeGlobals = require('rollup-plugin-node-globals');
-const nodeResolve = require('rollup-plugin-node-resolve');
+const path = require('path');
+
+const buble = require('rollup-plugin-buble')
+    , replace = require('rollup-plugin-replace')
+    , commonjs = require('rollup-plugin-commonjs')
+    , nodeBuiltins = require('rollup-plugin-node-builtins')
+    , nodeGlobals = require('rollup-plugin-node-globals')
+    , nodeResolve = require('rollup-plugin-node-resolve')
+    ;
 
 const faucet = require('faucet');
 
-
 module.exports = (config) => {
+  let builtFile = path.resolve(__dirname, 'dst/index.js')
+    , testPacks = path.resolve(__dirname, 'test/build/tape.js')
+    , testFiles = path.resolve(__dirname, 'test/etoe/**/*-test.js')
+    ;
+  let preprocessors = {};
+  preprocessors[builtFile] = ['rollup'];
+  preprocessors[testFiles] = ['rollup'];
+
   config.set({
     basePath: ''
   , autoWatch: false
@@ -21,11 +31,9 @@ module.exports = (config) => {
   , logLevel: config.LOG_ERROR
   , colors: true
   , files: [
-      'dst/index.js'
-      // rollup fix (via test/prepare-karma.sh)
-      , 'test/build/tape.js'
-      // test
-    , 'test/etoe/**/*-test.js'
+      builtFile
+    , testPacks  // rollup fix (via test/prepare-karma.sh)
+    , testFiles
     ]
   , frameworks: [
       'tap'
@@ -39,10 +47,7 @@ module.exports = (config) => {
   , reporters: [
       'tap-pretty'
     ]
-  , preprocessors: {
-      './dst/index.js': ['rollup']
-    , './test/etoe/**/*-test.js': ['rollup']
-    }
+  , preprocessors: preprocessors
   , rollupPreprocessor: {
       output: {
         format: 'iife'
@@ -63,7 +68,7 @@ module.exports = (config) => {
         , browser: true
         })
       , replace({
-           'process.env': JSON.stringify('testing')
+           'process.env': JSON.stringify('test')
         })
       , buble()
       , commonjs()

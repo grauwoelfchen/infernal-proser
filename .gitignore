@@ -4,8 +4,10 @@
 /dst
 
 /.reify-cache
+/.env.ci
 
 /venv
+/bin/gitlab-ci-multi-runner
 
 /test/build/*
 
