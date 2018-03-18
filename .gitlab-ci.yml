@@ -51,7 +51,8 @@ test-etoe:
   before_script:
     - mkdir -pv $APT_CACHE_DIR && apt-get -qq update
     - apt-get -qq -o dir::cache::archives="$APT_CACHE_DIR" install -y
-      xauth xvfb firefox-esr
+      xvfb firefox-esr
+    - firefox --version
     - node --version
     - npm --version
     - npm install
