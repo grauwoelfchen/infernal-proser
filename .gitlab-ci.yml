@@ -47,17 +47,22 @@ test-etoe:
   services:
   variables:
     NODE_ENV: test
+    APT_CACHE_DIR: apt-cache
   before_script:
+    - mkdir -pv $APT_CACHE_DIR && apt-get -qq update
+    - apt-get -qq -o dir::cache::archives="$APT_CACHE_DIR" install -y
+      xauth xvfb firefox-esr
     - node --version
     - npm --version
     - npm install
     # testing build
     - npm run build
   script:
-    - ./node_modules/.bin/karma start karma.conf.js
+    - xvfb-run npm run karma
   cache:
     untracked: true
     paths:
+      - apt-cache
       - node_modules
   except:
     - tags
