@@ -1,3 +1,9 @@
+Mar 19 Mar 2018 Yasuhiro Asaka <yasuhiro.asaka@grauwoelfchen.net>
+	* Release v0.0.6
+
+Mar 18 Mar 2018 Yasuhiro Asaka <yasuhiro.asaka@grauwoelfchen.net>
+	* Fix 2to2 test on CI
+
 Tue 13 Mar 2018 Yasuhiro Asaka <yasuhiro.asaka@grauwoelfchen.net>
 	* Release v0.0.5
 	* Fix accidentaly broken change ;-(
