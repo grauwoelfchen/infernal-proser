@@ -16,6 +16,9 @@ An editor written with [Inferno](https://www.infernojs.org/) + [ProseMirror](htt
 
 ## Usage
 
+See `example` about usage as Component or other details.
+
+
 ```javascript
 import {render} from 'inferno';
 import {h} from 'inferno-hyperscript';
@@ -32,13 +35,20 @@ render(
           setPlaceholder('Write something here...')
         ]
       }
-    // event handlers (optinal)
-    , onFocusIn: (e) => { ... }
-    , onInput: (e) => { ... }
-    , onFocusOut: (e) => { ... }
-    // transaction hooks (optional)
-    , beforeDispatch: (t) => { ... }
-    , afterDispatch: (t) => { ... }
+
+      // event handlers (optinal)
+      , onFocusIn: (instance, event) => {
+          // do something
+
+         event.stopImmediatePropagation();
+         event.preventDefault();
+        }
+      , onFocusOut: (i, e) => { ... }
+      , onInput: (i, e) => { ... }
+
+      // transaction hooks (optional)
+      , beforeDispatch: (t) => { ... }
+      , afterDispatch: (t) => { ... }
     })
   ])
 , document.querySelector('#editor')
