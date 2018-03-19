@@ -6,18 +6,33 @@ import {h} from 'inferno-hyperscript';
 
 import {Editor, setPlaceholder} from 'vergil';
 
-const handleOnInput = (instance, event) => {
-  // instance is Editor (vergil)
+const handleOnFocusIn = (instance, event) => {
+  // instance is MyEditor (because linkEvent)
   //window.console.log(instance);
   //window.console.log(event);
-  window.console.log('(handleOnInput)');
+  window.console.log('(onFocusIn)');
+
+  // stop bubbles
+  event.stopImmediatePropagation();
+  event.preventDefault();
 };
 
 const handleOnFocusOut = (instance, event) => {
   // instance is MyEditor (because linkEvent)
   //window.console.log(instance);
   //window.console.log(event);
-  window.console.log('(handleOnFocusOut)');
+  window.console.log('(onFocusOut)');
+
+  // stop bubbles
+  event.stopImmediatePropagation();
+  event.preventDefault();
+};
+
+const handleOnInput = (instance, event) => {
+  // instance is Editor (vergil)
+  //window.console.log(instance);
+  //window.console.log(event);
+  window.console.log('(onInput)');
 };
 
 // simple version
@@ -32,9 +47,10 @@ const handleOnFocusOut = (instance, event) => {
 //           setPlaceholder('Write something here...')
 //         ]
 //       }
-//     , onFocusIn: null
-//     , onInput: null
-//     , onFocusOut: null
+//     , onFocusIn: (instance, event) => { window.console.log('(onFocusIn)'); }
+//     , onFocusOut: handleOnFocusOut
+//     , onInput: linkEvent(this, handleOnInput)
+//
 //     , beforeDispatch: null
 //     , afterDispatch: null
 //     })
@@ -59,9 +75,9 @@ class MyEditor extends Component {
         }
 
         // events (optinal)
-      , onFocusIn: (instance, event) => { window.console.log('(onFocusIn)'); }
-      , onInput: handleOnInput
+      , onFocusIn: linkEvent(this, handleOnFocusIn)
       , onFocusOut: linkEvent(this, handleOnFocusOut)
+      , onInput: handleOnInput
 
         // hooks (optional)
       , beforeDispatch: (transaction) => {
