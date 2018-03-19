@@ -1,6 +1,6 @@
 {
   "name": "vergil",
-  "version": "0.0.6",
+  "version": "0.0.7",
   "description": "A editor written with Inferno + ProseMirror",
   "main": "./dst/index.js",
   "author": "Yasuhiro Asaka <yasuhiro.asaka@grauwoelfchen.net>",
