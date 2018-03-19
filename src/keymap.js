@@ -1,13 +1,42 @@
-import {chainCommands, exitCode, newlineInCode,
-        createParagraphNear,
-        liftEmptyBlock, splitBlock} from 'prosemirror-commands';
+import {
+  chainCommands
+, exitCode
+, newlineInCode
+, createParagraphNear
+, liftEmptyBlock
+, splitBlock
+, deleteSelection
+, joinBackward
+, selectNodeBackward
+} from 'prosemirror-commands';
 import {keymap as keymap_} from 'prosemirror-keymap';
 
 import {schema} from './schema';
 
 
+const bsCommands = chainCommands(
+  deleteSelection
+, joinBackward
+, selectNodeBackward
+);
+
+const delCommands = chainCommands(  // same with backspace
+  deleteSelection
+, joinBackward
+, selectNodeBackward
+);
+
+const enterCommands = chainCommands(
+  newlineInCode
+, createParagraphNear
+, liftEmptyBlock
+, splitBlock
+);
+
+
 // `mapKeys` e.g. {
-//   'Mod-B': 'Ctrl-B', 'Ctrl-C': false
+//   'Mod-B': 'Ctrl-B',
+//   'Ctrl-C': false
 // }
 export function keymap(mapKeys) {
   let maps = {}
@@ -28,12 +57,10 @@ export function keymap(mapKeys) {
     maps[key] = operation;
   };
 
-  imap('Enter', chainCommands(
-    newlineInCode
-  , createParagraphNear
-  , liftEmptyBlock
-  , splitBlock
-  ));
+  // basic mappings
+  imap('Backspace', bsCommands);
+  imap('Delete', delCommands);
+  imap('Enter', enterCommands);
 
   let type;
 
@@ -46,8 +73,6 @@ export function keymap(mapKeys) {
           return true;
         })
       ;
-
-    imap('Enter', operation);
     imap('Shift-Enter', operation);
   }
   return keymap_(maps);
